@@ -40,6 +40,7 @@ namespace SalesMVC
             services.AddScoped<SeedingService>(); //Initiates the service in the injection dependecy of application
             services.AddScoped<SellerService>();
             services.AddScoped<DepartmentService>();
+            services.AddScoped<SalesRecordService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
