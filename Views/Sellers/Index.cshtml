@@ -1,0 +1,61 @@
+﻿@model IEnumerable<SalesMVC.Models.Seller>
+@{
+    ViewData["Title"] = "Seller";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>
+    <a asp-action="Create" class="btn btn-default">Create New</a>
+</p>
+<table class="table table-striped table-hover">
+    <!--Header of the table-->
+    <thead>
+        <!--Row of The Header-->
+        <tr class="success">
+            <!--column of Header-->
+            <th>
+                <!--Tittle of the Column, using tag helper Html.DisplayNameFor that gets the name of
+                    property and lambda expression pointing to model and the property wich is necessary-->
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--Loop for walk into the list passed by the controller-->
+        @foreach (var item in Model)
+        {
+            <!--Row of the list of data-->
+            <tr>
+                <!--Each column of the model-->
+                <td>
+                    <!--Like in the header used a tag helper but here Html.DisplayFor looks into the
+                    content of the model property and the lambda points to wich one-->
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    <!--The tag helper asp-action is the one who take the responsibility to create the
+                        link to the other controller, the asp-route-id gets the id of the register of data to
+                        call the exact register in database on controller edit, delete or detail for that especific id-->
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>&nbsp;|&nbsp;
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>&nbsp;|&nbsp;
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
