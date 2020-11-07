@@ -27,7 +27,7 @@ namespace SalesMVC.Models
         [Required(ErrorMessage = "{0} field is required!")]
         [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
         [Display(Name = "Base Salary")]
-        [DisplayFormat(DataFormatString = "{0:F2}")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         public double BaseSalary { get; set; }
 
         [Display(Name = "Department")]
